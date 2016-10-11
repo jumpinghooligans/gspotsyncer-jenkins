@@ -42,11 +42,23 @@
                   <noDefaultExcludes>false</noDefaultExcludes>
                   <makeEmptyDirs>false</makeEmptyDirs>
                   <patternSeparator>[, ]+</patternSeparator>
-                  <execCommand>cd /home/ec2-user/gspotsyncer &amp;&amp;\
-git pull &amp;&amp;\
-sudo chmod -R 777 jenkins/ &amp;&amp;\
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml build gspotsyncer</execCommand>
+                  <execCommand>docker rm $(docker ps -a -q)</execCommand>
                   <execTimeout>300000</execTimeout>
+                  <usePty>false</usePty>
+                </jenkins.plugins.publish__over__ssh.BapSshTransfer>
+                <jenkins.plugins.publish__over__ssh.BapSshTransfer>
+                  <remoteDirectory></remoteDirectory>
+                  <sourceFiles></sourceFiles>
+                  <excludes></excludes>
+                  <removePrefix></removePrefix>
+                  <remoteDirectorySDF>false</remoteDirectorySDF>
+                  <flatten>false</flatten>
+                  <cleanRemote>false</cleanRemote>
+                  <noDefaultExcludes>false</noDefaultExcludes>
+                  <makeEmptyDirs>false</makeEmptyDirs>
+                  <patternSeparator>[, ]+</patternSeparator>
+                  <execCommand>docker rmi $(docker images -q)</execCommand>
+                  <execTimeout>120000</execTimeout>
                   <usePty>false</usePty>
                 </jenkins.plugins.publish__over__ssh.BapSshTransfer>
               </transfers>
